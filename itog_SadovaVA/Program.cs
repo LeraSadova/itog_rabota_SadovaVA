@@ -1,2 +1,56 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿//Console.WriteLine("Hello, World!");
+//Задача: Написать программу, которая из имеющегося массива строк формирует массив из строк, 
+//длина которых меньше либо равна 3м символам. 
+//Первоначальный массив вводится с клавиатуры, либо задается на старте выполнения алгоритма. 
+//При решении не рекомендуется пользоваться коллекциями, лучше обойтись исключительно массивами
+Console.Clear(); // очищаем терминал при запуске
+Console.WriteLine("Привет, друг! Давай создадим текстовый одномерный массив?");
+Console.WriteLine("Сначала определим, сколько слов с клавиатуры мы введем. Укажи число слов:");
+Console.WriteLine("ps: лучше введите небольшое число, чтобы не заполнять много букв ;)");
+int n=Convert.ToInt32(Console.ReadLine()); // n-это число слов в текстовом массиве
+
+string[] array1 = new string[n]; // объявляем наш массив, теперь будем его заполнять:
+int i=0;
+
+while (i<n)
+{
+    Console.WriteLine($"Введите {i+1}-й элемент массива"); //вводим элементы массива с клавиатуры
+    array1[i]=Console.ReadLine();
+    //Console.WriteLine();
+    i++;
+}
+//выводим массив на экран:
+Console.WriteLine("Введенный с клавиатуры массив имеет вид: ");
+for (i = 0; i < n; i = i + 1)
+Console.Write($"[{array1[i]}]");
+
+
+string[] array2 = new string[array1.Length]; // объявляем второй массив, равный по длине первому
+void FindElementsLessThen3(string[] array1, string[] array2)
+{
+    int count = 0;
+    for (int i = 0; i < array1.Length; i++) // пока выполняется это условие, мы пробегаемся по всем элементам
+    //первого массива, чтобы найти элементы для заполнения второго массива
+    {
+    if(array1[i].Length <= 3) //проверяем элемент массива - меньше ли в нем 3х символов (или равно)
+        {
+        array2[count] = array1[i]; //если да, то первый элемент второго массива равен найденному элементу первого массива
+        count++; //шаг +1
+        }
+    }
+}
+void PrintArray(string[] array) //метод для печати массива
+{
+    for (int i = 0; i < array.Length; i++)
+    {
+        Console.Write($"{array[i]} ");
+        
+    }
+    
+    Console.WriteLine();
+}
+FindElementsLessThen3(array1, array2); //обращаемся к первому методу
+Console.WriteLine();
+Console.WriteLine("элементы массива, удовлетворяющие условию задачи:");
+PrintArray(array2); // выводим результат метода на печать
+
