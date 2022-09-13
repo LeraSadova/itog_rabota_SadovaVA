@@ -16,14 +16,9 @@ while (i<n)
 {
     Console.WriteLine($"Введите {i+1}-й элемент массива"); //вводим элементы массива с клавиатуры
     array1[i]=Console.ReadLine();
-    //Console.WriteLine();
+    
     i++;
 }
-//выводим массив на экран:
-Console.WriteLine("Введенный с клавиатуры массив имеет вид: ");
-for (i = 0; i < n; i = i + 1)
-Console.Write($"[{array1[i]}]");
-
 
 string[] array2 = new string[array1.Length]; // объявляем второй массив, равный по длине первому
 void FindElementsLessThen3(string[] array1, string[] array2)
@@ -50,6 +45,8 @@ void PrintArray(string[] array) //метод для печати массива
     Console.WriteLine();
 }
 FindElementsLessThen3(array1, array2); //обращаемся к первому методу
+Console.WriteLine("Введенный с клавиатуры массив имеет вид: ");
+PrintArray(array1); // выводим результат метода на печать
 Console.WriteLine();
 Console.WriteLine("элементы массива, удовлетворяющие условию задачи:");
 PrintArray(array2); // выводим результат метода на печать
